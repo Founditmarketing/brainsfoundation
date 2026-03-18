@@ -32,9 +32,11 @@ export default function FreeInspection() {
             if (response.ok) {
                 setFormStatus('success');
             } else {
-                console.error('Failed to submit form');
+                const errData = await response.json().catch(() => ({}));
+                console.error('Failed to submit form:', errData);
                 setFormStatus('idle');
-                alert('Failed to send request. Please try again.');
+                const errMsg = errData?.error?.message || 'Failed to send request. Please try again.';
+                alert(`Failed to send request: ${errMsg}`);
             }
         } catch (error) {
             console.error('Error submitting form:', error);
