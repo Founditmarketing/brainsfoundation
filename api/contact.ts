@@ -25,7 +25,7 @@ export default async function handler(req: any, res: any) {
     `;
 
     const data = await resend.emails.send({
-      from: 'hello@briansfoundation.com',
+      from: 'hello@briansfoundationrepair.com',
       to: 'briansfoundation@gmail.com',
       replyTo: email,
       subject: `New Inspection Request from ${firstName} ${lastName}`,
