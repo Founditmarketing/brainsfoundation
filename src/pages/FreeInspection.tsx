@@ -7,14 +7,40 @@ import SEO from '../components/SEO';
 export default function FreeInspection() {
     const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setFormStatus('submitting');
 
-        // Simulate API call for the prototype
-        setTimeout(() => {
-            setFormStatus('success');
-        }, 1500);
+        const formData = {
+            firstName: (document.getElementById('firstName') as HTMLInputElement).value,
+            lastName: (document.getElementById('lastName') as HTMLInputElement).value,
+            email: (document.getElementById('email') as HTMLInputElement).value,
+            phone: (document.getElementById('phone') as HTMLInputElement).value,
+            service: (document.getElementById('service') as HTMLSelectElement).value,
+            message: (document.getElementById('message') as HTMLTextAreaElement).value,
+        };
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setFormStatus('success');
+            } else {
+                console.error('Failed to submit form');
+                setFormStatus('idle');
+                alert('Failed to send request. Please try again.');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setFormStatus('idle');
+            alert('Failed to send request. Please try again.');
+        }
     };
 
     return (
