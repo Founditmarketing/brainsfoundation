@@ -182,7 +182,7 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1 relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl bg-black flex items-center justify-center">
-                <span className="text-white/50 font-display text-lg uppercase tracking-widest">Image Placeholder</span>
+                <img src="/1.jpg" alt="About Brian's Foundation Repair" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-primary-red text-white p-8 rounded-2xl shadow-xl hidden md:block border-4 border-concrete">
                 <div className="text-4xl font-display font-bold mb-1">30+</div>
