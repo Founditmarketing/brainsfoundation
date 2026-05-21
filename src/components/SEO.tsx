@@ -12,8 +12,8 @@ export default function SEO({ title, description, type = 'website', name = "Bria
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Brian's Foundation Repair",
-        "image": "https://briansfoundationrepair.com/hero-image.png",
-        "url": "https://briansfoundationrepair.com/",
+        "image": "https://brainsfoundationrepair.com/hero-image.png",
+        "url": "https://brainsfoundationrepair.com/",
         "telephone": "+1-660-423-3468",
         "address": {
             "@type": "PostalAddress",

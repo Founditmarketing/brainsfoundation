@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://briansfoundationrepair.com/sitemap.xml
+Sitemap: https://brainsfoundationrepair.com/sitemap.xml
