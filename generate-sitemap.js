@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const SITE_URL = 'https://brainsfoundationrepair.com';
+const SITE_URL = 'https://briansfoundationrepair.com';
 
 const routes = [
     '/',
