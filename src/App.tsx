@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { RootLayout } from './components/layout/RootLayout';
 import ScrollToTop from './components/ScrollToTop';
 import { Home } from './components/Home';
+import { Analytics } from '@vercel/analytics/react';
 
 import React, { Suspense, lazy } from 'react';
 
@@ -97,6 +98,7 @@ export default function App() {
           } />
         </Routes>
       </RootLayout>
+      <Analytics />
     </Router>
   );
 }
