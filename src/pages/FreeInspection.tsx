@@ -21,12 +21,17 @@ export default function FreeInspection() {
         };
 
         try {
-            const response = await fetch('/api/contact', {
+            const response = await fetch('https://www.founditos.com/api/contact-form/d5b8cd96-1388-425e-9e9d-adb2bb775e81', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    name: `${formData.firstName} ${formData.lastName}`,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: `Service: ${formData.service}\n\n${formData.message}`,
+                }),
             });
 
             if (response.ok) {
