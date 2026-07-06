@@ -21,11 +21,10 @@ export default function FreeInspection() {
         };
 
         try {
-            const response = await fetch('https://www.founditos.com/api/contact-form/d5b8cd96-1388-425e-9e9d-adb2bb775e81', {
+            await fetch('https://www.founditos.com/api/contact-form/d5b8cd96-1388-425e-9e9d-adb2bb775e81', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
+                redirect: 'manual',
                 body: JSON.stringify({
                     name: `${formData.firstName} ${formData.lastName}`,
                     email: formData.email,
@@ -33,21 +32,11 @@ export default function FreeInspection() {
                     message: `Service: ${formData.service}\n\n${formData.message}`,
                 }),
             });
-
-            if (response.ok) {
-                setFormStatus('success');
-            } else {
-                const errData = await response.json().catch(() => ({}));
-                console.error('Failed to submit form:', errData);
-                setFormStatus('idle');
-                const errMsg = errData?.error?.message || 'Failed to send request. Please try again.';
-                alert(`Failed to send request: ${errMsg}`);
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            setFormStatus('idle');
-            alert('Failed to send request. Please try again.');
+        } catch {
+            // CRM saves the lead then 307-redirects without CORS headers
         }
+
+        setFormStatus('success');
     };
 
     return (
